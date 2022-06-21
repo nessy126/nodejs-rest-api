@@ -3,6 +3,7 @@ const {createError} = require('../helpers')
 const validation = (schema) => {
   const func = (req, res, next) => {
     try {
+      // console.log(req.body)
       const { error } = schema.validate(req.body)
       if (error) {
         const err = createError(400, error.message)

@@ -11,6 +11,7 @@ app.use(logger(formatsLogger))
 app.use(cors())
 app.use(express.json())
 
+app.use('/users', router.register)
 app.use('/api/contacts', router.contacts)
 
 app.use((req, res) => {

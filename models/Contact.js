@@ -21,8 +21,6 @@ const contactSchema = Schema({
   },
 })
 
-
-
 const add = Joi.object({
   name: Joi.string()
     .min(3)
