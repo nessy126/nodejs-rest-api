@@ -18,14 +18,14 @@ const auth = async (req, res, next) => {
     const {
       id
     } = jwt.verify(token, SECRET_KEY)
-
+    
     const user = await User.findById(id)
     if (!user || !user.token) {
       throw createError(401)
     }
     req.user = user;
     next()
-
+    
   } catch (error) {
     if (error.message === "Invalid signature") {
       error.status = 401;

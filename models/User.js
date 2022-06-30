@@ -3,6 +3,8 @@ const Joi = require('joi')
 
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
+const subscriptions = ['starter', 'pro', 'business']
+
 const userSchema = Schema({
     password: {
       type: String,
@@ -15,17 +17,14 @@ const userSchema = Schema({
     },
     subscription: {
       type: String,
-      enum: ["starter", "pro", "business"],
+      enum: subscriptions,
       default: "starter"
     },
     token: {
       type: String,
       default: null,
   },
-     owner: {
-       type: SchemaTypes.ObjectId,
-       ref: 'user',
-     }
+    avatarURL: String,
 })
   
 const User = model("user", userSchema)
@@ -42,8 +41,8 @@ const loginUser = Joi.object({
 
 const schemas = {
   registerUser,
-  loginUser
-}
+  loginUser,
+  }
 
 module.exports = {
   User,
