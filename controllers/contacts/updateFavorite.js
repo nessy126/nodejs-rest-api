@@ -8,7 +8,7 @@ const updateFavorite = async (req, res) => {
     contactId
   } = req.params;
   console.log(req.body);
-  const result = await Contact.findByIdAndUpdate(contactId, req.body);
+  const result = await Contact.findByIdAndUpdate(contactId, req.body, {new: true});
 
   if (!result) {
     throw createError(404)
